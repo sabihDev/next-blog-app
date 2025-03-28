@@ -1,5 +1,5 @@
 import { createPost } from "@/app/actions";
-import { Button } from "@/components/ui/button";
+import SubmitButton from "@/components/general/SubmitButton";
 import {
   Card,
   CardContent,
@@ -57,9 +57,7 @@ export default function CreatePosts() {
               />
             </div>
 
-            <Button className="w-full py-5 text-lg font-semibold">
-              Publish Post
-            </Button>
+            <SubmitButton />
           </form>
         </CardContent>
       </Card>
