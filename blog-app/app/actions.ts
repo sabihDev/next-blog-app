@@ -7,11 +7,16 @@ import { redirect } from "next/navigation";
 export async function createPost(formData: FormData) {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+
+  if (!user) {
+    return redirect("/api/auth/login");
+  }
+
   const title = formData.get("title");
   const content = formData.get("content");
   const url = formData.get("url");
 
-  const data = await prisma.blogPost.create({
+  await prisma.blogPost.create({
     data: {
       title: title as string,
       content: content as string,
@@ -22,6 +27,6 @@ export async function createPost(formData: FormData) {
       authorName: user.given_name as string,
     },
   });
-    
-    return redirect("/dashboard");
+
+  return redirect("/dashboard");
 }
