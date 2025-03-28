@@ -17,7 +17,7 @@ export default function CreatePosts() {
       <Card className="max-w-2xl mx-auto shadow-lg">
         <CardHeader className="space-y-2">
           <CardTitle className="text-3xl font-bold text-center">
-            Create Post
+            Create Your Blog Posts
           </CardTitle>
           <CardDescription className="text-center text-gray-500">
             Share your thoughts and ideas with the world
