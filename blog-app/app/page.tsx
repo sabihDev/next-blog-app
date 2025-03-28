@@ -1,5 +1,6 @@
 // import Link from "next/link";
 
+import { BlogPostCard } from "@/components/general/blogPostCard";
 import { prisma } from "./utils/db";
 
 async function getPosts() {
@@ -12,6 +13,8 @@ async function getPosts() {
       authorName: true,
       createdAt: true,
       id: true,
+      authorId: true,
+      updatedAt: true,
     },
   });
 
@@ -27,16 +30,7 @@ export default async function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           data.map((post) => (
-            <div key={post.id} className="bg-white rounded-lg shadow-md p-6">
-              
-              <h2 className="text-xl font-semibold mt-4">{post.title}</h2>
-              <p className="text-gray-500 mt-2">{post.content}</p>
-              <div className="flex items-center mt-4">
-                
-                <p className="text-gray-700 ml-2">{post.authorName}</p>
-              </div>
-              <p>{post.createdAt.toLocaleDateString()}</p>
-            </div>
+            <BlogPostCard key={post.id} data={post} />
           ))
         }
       </div>
