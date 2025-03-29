@@ -20,7 +20,7 @@ async function getPostsOfUser(userId: string) {
 export default async function Dashboard() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const posts = await getPostsOfUser(user.id);
+  const posts = await getPostsOfUser(user?.id);
 
   return (
     <div className="mt-4">
